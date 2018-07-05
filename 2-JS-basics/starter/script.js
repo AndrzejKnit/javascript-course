@@ -76,7 +76,7 @@ console.log(typeof x);
  /***********************
   * Operator precendence
   */
-
+/*
   var now = 2018;
   var yearJohn = 1989;
   var fullAge= 18;
@@ -107,5 +107,21 @@ x = x +1;
 x += 1;
 x++;
 console.log(x);
+*/
 
+
+var massMark, massJohn;
+massMark = 78; // kg
+massJohn = 92;
+var heightMark, heightJohn;
+heightMark = 1.69; // meters
+heightJohn = 1.95;
+
+var bmiMark = massMark / (heightMark * heightMark);
+var bmiJohn = massJohn / (heightJohn * heightJohn);
+
+var isBmiHigher = bmiMark >= bmiJohn;
+
+console.log(bmiMark, bmiJohn);
+console.log('Is Mark\'s BMI higher than John\'s?' + ' ' + isBmiHigher);
 
