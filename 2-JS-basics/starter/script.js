@@ -352,7 +352,7 @@ switch(true) {
      /*************
       * Arrays
       */
-
+/*
       var names = ['John', 'Mark', 'Jane'];
       var years = new Array(1990, 1969, 1948);
      //Initialize new array
@@ -379,4 +379,33 @@ switch(true) {
 
     var isDesigner =  john.indexOf('designer') === -1 ? 'John is NOT a designer' : 'John IS a designer';
      console.log(isDesigner);
+*/
+
+/***********
+ * Challenge 3
+ */
+//
+ function tipCalculator(bill) {
+     var tip;
+     if (bill < 50) {
+        tip = 20/100;
+     } else if (bill >= 50 && bill < 200) {
+         tip = 15/100;
+     } else {
+         tip = 10/100;
+     }
+     return tip * bill ;
+ }
+
+ //var tipArray = push(tip);
+console.log(tipCalculator(199));
+
+var bills = [124, 48, 268];
+var tips = [tipCalculator(bills[0]),
+            tipCalculator(bills[1]),
+            tipCalculator(bills[2])];
+var finalValues = [bills[0] + tips[0],
+                    bills[1] + tips[1],
+                    bills[2] + tips[2]];
+console.log(tips, finalValues);
 
