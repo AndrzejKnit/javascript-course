@@ -414,7 +414,7 @@ console.log(tips, finalValues);
 /**************
  * Objects and properties
  */
-
+/*
  // Object literal
  var john = {
      firstName: 'John',
@@ -440,3 +440,26 @@ console.log(tips, finalValues);
  jane.birthYear = 1968;
  jane['lastName'] = 'Smith';
  console.log(jane);
+ */
+
+ /**************
+  * Objects and methods
+  */
+// funkcje w objekcie to metody
+// tylko objekty maja metody
+
+var john = {
+    firstName: 'John',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false,
+    calcAge: function(birthYear) {
+        //dodanie property do obiktu
+        this.age = 2018 - this.birthYear;
+    }
+};
+john.calcAge();
+console.log(john);
+
