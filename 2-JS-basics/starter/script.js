@@ -328,7 +328,7 @@ switch(true) {
 
      // Function declaration
    // function whatDoYouDo(job, firstName) {}
-
+/*
 // Function expression
      var whatDoYouDo = function(job, firstName) {
         switch(job) {
@@ -346,3 +346,37 @@ switch(true) {
      console.log(whatDoYouDo('teacher', 'John'));
      console.log(whatDoYouDo('driver', 'Marry'));
      console.log(whatDoYouDo('designer', 'Adam'));
+
+     */
+
+     /*************
+      * Arrays
+      */
+
+      var names = ['John', 'Mark', 'Jane'];
+      var years = new Array(1990, 1969, 1948);
+     //Initialize new array
+      console.log(names[2]);
+      console.log(names.length);
+     // Mutete array data
+      names[1] = 'Ben';
+      names[names.length] = 'Marry';
+     console.log(names);
+
+     // Different data types
+
+
+     var john = ['John', 'Smith', 1990, 'teacher', false];
+     john.push('blue');
+     john.unshift('Mr.');
+     console.log(john);
+
+     john.pop();
+     john.shift();
+     console.log(john);
+
+     console.log(john.indexOf(23));
+
+    var isDesigner =  john.indexOf('designer') === -1 ? 'John is NOT a designer' : 'John IS a designer';
+     console.log(isDesigner);
+
