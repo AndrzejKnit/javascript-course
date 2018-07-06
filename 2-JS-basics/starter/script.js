@@ -245,7 +245,7 @@ switch(true) {
 
   // falsy values: underfined, null 0, '', NaN
   // truthy values: NOT falsy values
-
+/*
   var height;
   height = 23;
   if (height || height === 0) {
@@ -259,3 +259,32 @@ switch(true) {
   if (height === '23') {
       console.log('The == operator does type coercion!');
   }
+
+  */
+
+  /*******
+   * Challenge 2
+   */
+    var aveJohnTeam = (89 + 120 + 103) / 3;
+    var aveMikeTeam = (116 + 94 + 123) / 3;
+    var aveMaryTeam = (97 + 134 + 105) / 3;
+//part 1
+   if (aveJohnTeam > aveMikeTeam) {
+       console.log('John\'s team win!' + aveJohnTeam + ' points');
+   } else if (aveJohnTeam < aveMikeTeam) {
+        console.log('Mike\'s team win!'  + aveMikeTeam + ' points');
+   } else {
+        console.log('There is a draw');
+   }
+// part 2
+   if (aveJohnTeam > aveMikeTeam && aveJohnTeam > aveMaryTeam) {
+    console.log('John\'s team win!' + aveJohnTeam + ' points');
+   } else if (aveMikeTeam > aveJohnTeam && aveMikeTeam > aveMaryTeam) {
+    console.log('Mike\'s team win!'  + aveMikeTeam + ' points');
+   } else if (aveMaryTeam > aveJohnTeam && aveMaryTeam > aveMikeTeam) {
+    console.log('Mary\'s team win!'  + aveMaryTeam + ' points');
+   } else {
+    console.log('There is a draw');
+   }
+
+
