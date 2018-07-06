@@ -447,7 +447,7 @@ console.log(tips, finalValues);
   */
 // funkcje w objekcie to metody
 // tylko objekty maja metody
-
+/*
 var john = {
     firstName: 'John',
     lastName: 'Smith',
@@ -462,4 +462,48 @@ var john = {
 };
 john.calcAge();
 console.log(john);
+*/
 
+/**************
+ * Challenge 4
+ */
+
+var mark = {
+    fullName: 'Mark Smith',
+    mass: 92,
+    height: 1.95,
+    calcBMI: function() {
+        this.BMI = this.mass / (this.height + this.height);
+        return this.BMI;
+    }
+}
+
+
+var john = {
+    fullName: 'John Smith',
+    mass: 78,
+    height: 1.69,
+    calcBMI: function() {
+        this.BMI = this.mass / (this.height + this.height);
+        return this.BMI;
+    }
+}
+console.log(mark,john);
+
+if (john.calcBMI() > mark.calcBMI()) {
+    console.log(john.fullName + ' BMI\'s ' + john.BMI + ' is higher then ' + mark.fullName);
+} else if (john.calcBMI() < mark.calcBMI()) {
+    console.log(mark.fullName + ' BMI\'s ' + mark.BMI + ' is higher then ' + john.fullName);
+} else if (john.calcBMI() === mark.calcBMI()) {
+    console.log(john.fullName + ' and ' + mark.fullName + ' have the same BMI.');
+}
+
+
+/*
+
+
+var isBmiHigher = bmiMark >= bmiJohn;
+
+console.log(bmiMark, bmiJohn);
+console.log('Is Mark\'s BMI higher than John\'s?' + ' ' + isBmiHigher);
+*/
