@@ -519,7 +519,7 @@ if (john.calcBMI() > mark.calcBMI()) {
     console.log(john[i]);
     i++;
  }
-*/
+
  //continue and break statements
  var john = ['John', 'Smith', 1990, 'teacher', false];
 
@@ -538,3 +538,140 @@ if (john.calcBMI() > mark.calcBMI()) {
 for (var i = john.length - 1; i >= 0; i--)  {
     console.log(john[i]);
 }
+*/
+
+/*******
+ *coding challenge 5
+ */
+
+/*
+ function tipCalculator(bill) {
+     var tip;
+     if (bill < 50) {
+        tip = 20/100;
+     } else if (bill >= 50 && bill < 200) {
+         tip = 15/100;
+     } else {
+         tip = 10/100;
+     }
+     return tip * bill ;
+ }
+
+ //var tipArray = push(tip);
+console.log(tipCalculator(199));
+
+var bills = [124, 48, 268, 180, 42];
+var tips = [tipCalculator(bills[0]),
+            tipCalculator(bills[1]),
+            tipCalculator(bills[2]),
+        tipCalculator(bills[3]),
+    tipCalculator(bills[4])];
+var finalValues = [bills[0] + tips[0],
+                    bills[1] + tips[1],
+                    bills[2] + tips[2]];
+console.log(tips, finalValues);
+*/
+
+var johnBills = {
+    bill: [124, 48, 268, 180, 42],
+    tips: [],
+    sumTip:[],
+    finalPaid: [],
+    calTip: function() {
+        for (i=0; i < this.bill.length; i++)
+        {
+            var tip;
+            var bill = this.bill[i];
+            if (bill < 50) {
+               tip = 20/100;
+            } else if (bill >= 50 && bill < 200) {
+                tip = 15/100;
+            } else {
+                tip = 10/100;
+            }
+            this.tips[i] = (tip * bill);
+            // this.finalPaid[i] = bill + bill * tip; - instead calFinalPaid
+        }
+    },
+    calFinalPaid: function() {
+        for (x = 0; x < this.bill.length; x++) {
+                this.finalPaid.push(this.bill[x] + this.tips[x]);
+        }
+    }
+}
+
+johnBills.calTip();
+johnBills.calFinalPaid();
+
+
+// obliczanie średniej dla Johna
+// można zastąpić to funkcją
+/*
+function calcAverage(tips) {
+    var sum = 0;
+    for (var i=0; i < tips.lenght; i++) {
+        sum = sum + tips[i];
+    }
+    return sum / tips.lenght;
+}
+
+
+ */
+var suma = 0;
+for (z=0; z< johnBills.tips.length; z++) {
+    suma += johnBills.tips[z];
+}
+johnBills.sumTip = suma;
+
+console.log(johnBills);
+
+/************************ */
+var markBills = {
+    bill: [77, 375, 110, 45],
+    tips: [],
+    aveTip: [],
+    sumTip: []
+}
+
+function tipCalculator(bill) {
+        var tip;
+        if (bill < 100) {
+           tip = 20/100;
+        } else if (bill >= 100 && bill < 300) {
+            tip = 10/100;
+        } else {
+            tip = 25/100;
+        }
+        return tip * bill;
+    }
+
+for (y = 0; y < markBills.bill.length; y++)
+    {
+        markBills.tips.push(tipCalculator(markBills.bill[y]));
+    }
+    ;
+
+    // opiczanie średnie dla Marka
+
+    var suma = 0;
+for (z=0; z< markBills.tips.length; z++) {
+    suma += markBills.tips[z];
+}
+markBills.sumTip = suma;
+markBills.aveTip = markBills.sumTip/markBills.tips.length;
+johnAve = johnBills.sumTip/johnBills.tips.length;
+
+console.log(markBills.aveTip);
+console.log(johnAve);
+
+if (johnAve > markBills.aveTip) {
+    console.log('John more tips paid');
+} else if (johnAve < markBills.aveTip) {
+    console.log('Mark more tips paid');
+} else {
+    console.log('they paid the same');
+}
+
+console.log(markBills);
+
+
