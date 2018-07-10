@@ -545,32 +545,7 @@ for (var i = john.length - 1; i >= 0; i--)  {
  */
 
 /*
- function tipCalculator(bill) {
-     var tip;
-     if (bill < 50) {
-        tip = 20/100;
-     } else if (bill >= 50 && bill < 200) {
-         tip = 15/100;
-     } else {
-         tip = 10/100;
-     }
-     return tip * bill ;
- }
 
- //var tipArray = push(tip);
-console.log(tipCalculator(199));
-
-var bills = [124, 48, 268, 180, 42];
-var tips = [tipCalculator(bills[0]),
-            tipCalculator(bills[1]),
-            tipCalculator(bills[2]),
-        tipCalculator(bills[3]),
-    tipCalculator(bills[4])];
-var finalValues = [bills[0] + tips[0],
-                    bills[1] + tips[1],
-                    bills[2] + tips[2]];
-console.log(tips, finalValues);
-*/
 
 var johnBills = {
     bill: [124, 48, 268, 180, 42],
@@ -616,7 +591,7 @@ function calcAverage(tips) {
 }
 
 
- */
+
 var suma = 0;
 for (z=0; z< johnBills.tips.length; z++) {
     suma += johnBills.tips[z];
@@ -625,7 +600,7 @@ johnBills.sumTip = suma;
 
 console.log(johnBills);
 
-/************************ */
+/************************ 
 var markBills = {
     bill: [77, 375, 110, 45],
     tips: [],
@@ -674,4 +649,4 @@ if (johnAve > markBills.aveTip) {
 
 console.log(markBills);
 
-
+*/
