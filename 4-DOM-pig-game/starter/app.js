@@ -9,9 +9,11 @@ GAME RULES:
 
 */
 
-var score, roundScore, prevoiusScore, activePlayer, gamePlaying;
+var score, roundScore, activePlayer, gamePlaying;
 
 init();
+
+var prevoiusScore;
 //document.querySelector('#current-' + activePlayer).textContent = dice;
 //document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>'; - przy innerHTML mozna używac html'a
 
@@ -35,7 +37,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             diceDOM.src = 'dice-' + dice + '.png';
 
             // 3. Update the round score IF the rolled number was NOT a 1
-if (prevoiusScore == 6 && dice == 6) {
+            if (prevoiusScore == 6 && dice == 6) {
                 scores[activePlayer] = 0;
                 document.getElementById('score-' + activePlayer).textContent = '0';
                 //document.querySelector('#name-' +activePlayer).textContent = 'rolls two 6 - ' + prevoiusScore + ' ' + dice;
@@ -43,13 +45,14 @@ if (prevoiusScore == 6 && dice == 6) {
             } else if (dice !== 1) {
                 //Add score
                 roundScore += dice;
-                prevoiusScore = dice;
+
                 document.querySelector('#current-' + activePlayer).textContent = roundScore;
 
             } else {
                 //Next player
                 nextPlayer();
             }
+            prevoiusScore = dice;
     }
 });
 
@@ -79,7 +82,7 @@ function nextPlayer() {
       //Next player
       activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
       roundScore = 0;
-      prevoiusScore = 0;
+      //prevoiusScore = 0;
       document.getElementById('current-0').textContent = '0';
       document.getElementById('current-1').textContent = '0';
      // document.querySelector('#name-' +activePlayer).textContent = 'Player ' + activePlayer + 1;
@@ -95,7 +98,7 @@ function init() {
     scores = [0,0];
     activePlayer = 0;
     roundScore = 0;
-    prevoiusScore = 0;
+    //prevoiusScore = 0;
     gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none';
