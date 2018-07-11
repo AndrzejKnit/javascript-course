@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var score, roundScore, activePlayer, gamePlaying;
+var score, roundScore, activePlayer, preScore, gamePlaying;
 
 init();
 
@@ -27,6 +27,7 @@ function btn() {
 btn(); */
 // btn - call back function - bedzie wywoływana przez inna funcję
 document.querySelector('.btn-roll').addEventListener('click', function() {
+
     if (gamePlaying) {
         // 1. Random number
             var dice = Math.floor(Math.random() * 6) + 1;
@@ -64,8 +65,18 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         // Update the UI
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
+    var input = document.querySelector('.final-score').value;
+    var winningScore;
+    // Undefine, 0 null or "" are COERCED to false
+    // Anything else is COERCED to true
+    if (input) {
+        winningScore = input;
+     } else {
+        winningScore = 100;
+     }
+
         // Check if player won the game
-        if (scores[activePlayer] >= 20) {
+        if (scores[activePlayer] >= winningScore) {
             document.querySelector('#name-' +activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -95,6 +106,7 @@ function nextPlayer() {
 document.querySelector('.btn-new').addEventListener('click', init);
 
 function init() {
+
     scores = [0,0];
     activePlayer = 0;
     roundScore = 0;
