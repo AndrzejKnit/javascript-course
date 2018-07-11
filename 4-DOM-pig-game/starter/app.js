@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var score, roundScore, activePlayer, gamePlaying;
+var score, roundScore, prevoiusScore, activePlayer, gamePlaying;
 
 init();
 //document.querySelector('#current-' + activePlayer).textContent = dice;
@@ -35,10 +35,17 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             diceDOM.src = 'dice-' + dice + '.png';
 
             // 3. Update the round score IF the rolled number was NOT a 1
-            if (dice !== 1) {
+if (prevoiusScore == 6 && dice == 6) {
+                scores[activePlayer] = 0;
+                document.getElementById('score-' + activePlayer).textContent = '0';
+                //document.querySelector('#name-' +activePlayer).textContent = 'rolls two 6 - ' + prevoiusScore + ' ' + dice;
+                nextPlayer();
+            } else if (dice !== 1) {
                 //Add score
                 roundScore += dice;
+                prevoiusScore = dice;
                 document.querySelector('#current-' + activePlayer).textContent = roundScore;
+
             } else {
                 //Next player
                 nextPlayer();
@@ -55,7 +62,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
         // Check if player won the game
-        if (scores[activePlayer] >= 10) {
+        if (scores[activePlayer] >= 20) {
             document.querySelector('#name-' +activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -72,15 +79,12 @@ function nextPlayer() {
       //Next player
       activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
       roundScore = 0;
-
+      prevoiusScore = 0;
       document.getElementById('current-0').textContent = '0';
       document.getElementById('current-1').textContent = '0';
-
+     // document.querySelector('#name-' +activePlayer).textContent = 'Player ' + activePlayer + 1;
       document.querySelector('.player-0-panel').classList.toggle('active');
       document.querySelector('.player-1-panel').classList.toggle('active');
-
-      //document.querySelector('.player-0-panel').classList.remove('active');
-      //document.querySelector('.player-1-panel').classList.add('active');
 
       document.querySelector('.dice').style.display = 'none';
 }
@@ -91,6 +95,7 @@ function init() {
     scores = [0,0];
     activePlayer = 0;
     roundScore = 0;
+    prevoiusScore = 0;
     gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none';
