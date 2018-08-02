@@ -154,6 +154,12 @@ var UIControler = (function() {
 
         },
 
+        deleteListItem: function(selectorID) {
+            var el = document.getElementById(selectorID);
+            el.parentNode.removeChild(el);
+
+        },
+
         clearFields: function() {
             var fields, fieldsArr;
             fields = document.querySelectorAll(DOMStrings.inputDescription + ', ' +
@@ -245,13 +251,14 @@ var controller = (function(budgetCtrl, UICtrl) {
             // inc-1
             splitID = itemID.split('-');
             type = splitID[0];
-            ID = parseInt(splitID[1]);
+            ID = parseInt(splitID[1]);  //parsowanie stringa do Int
 
             // 1. Delete the item from the data structure
             budgetControler.deleteItem(type, ID);
             // 2. Delete the item from the UI
-
+            UICtrl.deleteListItem(itemID);
             // 3. Update and show the new budget
+            updateBugget();
         }
     };
 
