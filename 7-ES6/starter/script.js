@@ -44,11 +44,31 @@ console.log(firstName + ', born in' + yearOfBirth + ', lalal');
 
 driverLicence6(true);
 */
-
+/*
 let i =23;
 for (let i = 0; i <5; i++) {
-    console.log(i);
+    console.log(i); // pokaże 4
 }
 
-console.log(i);
+console.log(i); // pokaże 23
+*/
+/*
+// Blocks and IIFEs
+//ES6
+{
+    const a = 1;
+    let b = 2;
+    var c=3;
+}
+
+//console.log(a+b);
+console.log(c);
+
+// ES5
+(function() {
+    var c=3;
+})();
+
+//console.log(c);
+*/
 
