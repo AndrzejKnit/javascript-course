@@ -164,6 +164,29 @@ var UIControler = (function() {
         container: '.container',
         expensesPercLabel: '.item__percentage'
     };
+
+    var formatNumber = function(num, type) {
+        var numSplit;
+        /*
+        + or - before number
+        exactly 2 decimal points
+        comma separating the
+        */
+       num = Math.abs(num);
+       num = num.toFixed(2);
+
+       numSplit = num.split('.');
+       int = numSplit[0];
+        if (int.length > 3) {
+            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, int.length); //input 23510, output 23,510
+        }
+
+       dec = numSplit[1];
+
+       return (type === 'exp' ? sign = '-' : sign = '+') + ' ' + int + '.' + dec;
+    };
+
+
     return {
         getInput: function() {
             return {
@@ -186,7 +209,7 @@ var UIControler = (function() {
             // Replace the placeholder tet with some actual data
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
-            newHtml = newHtml.replace('%value%', obj.value);
+            newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
             // Insert the HTML into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
 
@@ -212,9 +235,12 @@ var UIControler = (function() {
         },
 
         displayBudget: function(obj) {
-            document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
-            document.querySelector(DOMStrings.incomeLabel).textContent = obj.totalInc;
-            document.querySelector(DOMStrings.expensesLabel).textContent = obj.totalExp;
+            var type;
+            obj.budget > 0 ? type = 'inc' : type = 'exp'
+
+            document.querySelector(DOMStrings.budgetLabel).textContent = formatNumber(obj.budget, type);
+            document.querySelector(DOMStrings.incomeLabel).textContent = formatNumber(obj.totalInc, type);
+            document.querySelector(DOMStrings.expensesLabel).textContent =formatNumber(obj.totalExp, type);
 
 
             if (obj.percentage > 0) {
