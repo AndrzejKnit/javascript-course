@@ -69,7 +69,7 @@ console.log(c);
     var c=3;
 })();
 
-//console.log(c);
+console.log(c);
 */
 
 ///////////////
@@ -92,7 +92,7 @@ console.log('This is ' + firstName + lastName + '. He was born in ' + yearOfBirt
 console.log(`This is ${firstName} ${lastName}. He was born in ${yearOfBirth}. Today he is ${calcAge(yearOfBirth)} years old.`);
 
 const n = `${firstName} ${lastName}`;
-console.log(n.startsWith('j'));
+console.log(n.startsWith('J'));
 console.log(n.endsWith('th'));
 console.log(n.includes('m'));
 console.log(`${firstName} `.repeat(5));
@@ -121,14 +121,14 @@ console.log(ages6);
 ages6 = years.map((el, index) => {
     const now = new Date().getFullYear();
     const age = now - el;
-    return `Age element ${index + 1}: ${age}.`
+    return `Age element ${index + 1}: ${age}. ${el}`
 });
 console.log(ages6);
 */
 
 ////////////////////////////
 /// Lesson: Arrow functions 2
-
+/*
 // ES5
 var box5 = {
     color: 'green',
@@ -157,7 +157,7 @@ const box6 = {
     }
 }
 //box6.clickMe();
-
+*/
 function Person(name) {
     this.name = name;
 }
@@ -277,12 +277,12 @@ console.log(ages[full.indexOf(true)]);
 //ES6
 console.log(ages.findIndex(cur => cur >= 18));
 console.log(ages.find(cur => cur >=18));
-*/
+
 
 
 ////////////////////
 // Spread operator
-/*
+*//*
 function addFourAges (a, b, c, d) {
     return a + b + c + d;
 }
@@ -306,7 +306,7 @@ console.log(bigFamily);
 
 const h = document.querySelector('h1');
 const boxes = document.querySelectorAll('.box');
-const all = [h, ...boxes];                           // spread '...' jest używany w function call
+const all = [h, ...boxes];                           // spread '...' jest używany w call function
 Array.from(all).forEach(cur => cur.style.color = 'purple');
 */
 
@@ -424,7 +424,7 @@ console.log(question.get(ans === question.get('correct')));
 
 /////////////
 // Cleasses
-/*
+
 //ES5
 
 var Person5 = function(name, yearOfBirth, job) {
@@ -440,7 +440,7 @@ Person5.prototype.calculateAge = function() {
 
 var john5 = new Person5('John', 1990, 'teacher');
 
-
+/*
 //ES6
 class Person6 {
     constructor (name, yearOfBirth, job) {
@@ -469,7 +469,7 @@ Person6.greeting();
 // Classes and subclasses
 
 //ES5
-
+/*
 var Person5 = function(name, yearOfBirth, job) {
     this.name = name;
     this.yearOfBirth = yearOfBirth;
@@ -531,3 +531,97 @@ const johnAthlete6 = new Athlete6('John', 1990, 'swimmer', 3, 10);
 
 johnAthlete6.wonMedal();
 johnAthlete6.calculateAge();
+*/
+
+
+/////////////////////
+////Challenge 8
+/*
+class Element {
+    constructor(name, buildYear) {
+        this.name = name;
+        this.buildYear = buildYear;
+    }
+}
+
+class Park extends Element {
+    constructor(name, buildYear, area, numTrees) {
+        super(name, buildYear);
+        this.area = area; //km2
+        this.numTrees = numTrees;
+    }
+
+    treeDensity() {
+        const density = this.numTrees / this.area;
+        console.log(`${this.name} has a tree density of ${density} trees per square km.`);
+    }
+}
+
+class Street extends Element {
+    constructor(name, buildYear, length, size = 3) {
+        super(name, buildYear);
+        this.length = length;
+        this.size = size;
+    }
+
+    classifyStreet () {
+        const classyfication = new Map();
+        classyfication.set(1, 'tiny');
+        classyfication.set(2, 'small');
+        classyfication.set(3, 'normal');
+        classyfication.set(4, 'big');
+        classyfication.set(5, 'huge');
+        console.log(`${this.name}, buid in ${this.buildYear}, is a ${classification.get(this.size)} street.`)
+    }
+}
+
+const allParks = [new Park('Green Park', 1987, 0.2, 215),
+                    new Park('National Park', 1894,2.9, 3541),
+                new Park('Oak Park', 1953, 0.4, 949)];
+
+const allStreets = [new Street('Ocean Avenie', 1999, 1.1, 1),
+                    new Street('Evergreen Street', 2008, 2.7, 2),
+                    new Street('4th Street', 2015, 0.8),
+                new Street('Sunset Boulevard', 1982, 2.5, 5)];
+
+function calc(arr) {
+
+        const sum = arr.reduce((prev, cur, index) => prev + cur, 0);
+
+        return [sum, sum / arr.length];
+                }
+
+function reportParks(p) {
+    console.log('---------------PARKS REPORT---------------');
+
+    // Density
+    p.forEach(el => el.treeDensity());
+
+
+    // Average age
+    const ages = p.map(el => new Date().getFullYear() - el.buildYear);
+    const [totalAge, avgAge] = calc(ages);
+    console.log(`Our ${p.length} parks have an average of ${avgAge} years.`);
+
+    // Which park has more than 1000 trees
+
+        const i = p.map(el => el.numTrees).findIndex(el => el >= 1000);
+        console.log(`${p[i].name} has more than 1000 trees.`)
+}
+
+function reportStreets(s) {
+    console.log('---------------STREETS REPORT---------------');
+
+    // Total average length of the town's streets
+    const [totalLength, avgLength] = calc(s.map(el => el.length));
+    console.log(`Our ${s.length} streets have a total length of ${totalLenth}
+    km, with an average of ${avgLength} km.`);
+
+    // Classify sizes
+    s.forEach(el => el.classifyStreet());
+
+}
+
+reportParks(allParks);
+reportStreets(allStreets);
+*/
