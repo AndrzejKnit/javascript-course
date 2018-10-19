@@ -1,6 +1,24 @@
+import axios from 'axios';
 
-import str from './models/Search';
+async function getResults(query) {
 
-// import { add as a, multiply as m, ID } from './views/searchView';
-import * as searchView from './views/searchView';
-console.log(`Using imported functions! ${searchView.add(searchView.ID, 2)} and ${searchView.multiply(3,5)}. ${str}`);
+    const key ='87c57a1c06692338e5221fa0128cff7b';
+
+    try {
+   const res = await axios(`https://www.food2fork.com/api/search?key=${key}&q=${query}`);
+   const recipes = res.data.recipes;
+   console.log(recipes);
+ } catch (error) {
+     alert(error);
+ }
+}
+
+getResults('pizza');
+
+
+//https://www.food2fork.com/api/get
+//https://www.food2fork.com/api/search
+//
+
+
+
